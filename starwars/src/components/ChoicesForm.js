@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
+import CardForm from "./CardForm";
+// import CardContainer from "./CardContainer";
 function ChoicesForm() {
   const [choiceArray, setChoiceArray] = useState({});
   const [selection, setSelection] = useState("");
@@ -44,27 +45,9 @@ function ChoicesForm() {
       });
   }
 
-  // useEffect(() => {
-  //   console.log(
-  //     "I am the value of selection in api call",
-  //     selection.slice(0, -1)
-  //   );
-  //   console.log(`https://rickandmortyapi.com/api/${selection.slice(0, -1)}`);
-  //   axios
-  //     .get(`https://rickandmortyapi.com/api/${selection.slice(0, -1)}`)
-  //     .then((res) => {
-  //       console.log("cardData!", res.data);
-  //       setCardData(res.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err, "found!");
-  //     });
-  // }, [selection, setSelection]);
-
   return (
-    // Object.keys(user)
     <div>
-      <h1>Test!</h1>
+      <h1>Rick and Morty App</h1>
       <form onSubmit={(e) => handleSubmit(e)}>
         <label htmlFor="topic-selection">
           Select Topic:
@@ -89,6 +72,14 @@ function ChoicesForm() {
         <br />
         <button>Submit!</button>
       </form>
+      <br />
+      <br />
+      <div>
+        <CardForm cardData={cardData} name={cardData.name} />
+      </div>
+      <br />
+      <br />
+      {/* <CardContainer /> */}
     </div>
   );
 }
